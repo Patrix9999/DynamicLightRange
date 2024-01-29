@@ -12,5 +12,5 @@ Below image shows how this feature works in **Spacer.NET**
 
 # Usage
 
-- Download the DynamicLightRange.dll from [releases page]()
+- Download the DynamicLightRange.dll from [releases page](https://github.com/Patrix9999/DynamicLightRange/releases)
 - Place it in `Game/System/autorun` directory
