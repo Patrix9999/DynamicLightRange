@@ -1,0 +1,27 @@
+# Visual Studio
+
+/.vs/
+
+# Build directories
+
+/Bin/
+/PDB/
+
+/G1 Debug/
+/G1 MD Release/
+/G1 MT Release/
+/G1A Debug/
+/G1A MD Release/
+/G1A MT Release/
+/G2 Debug/
+/G2 MD Release/
+/G2 MT Release/
+/G2A Debug/
+/G2A MD Release/
+/G2A MT Release/
+/MP x2 Debug/
+/MP x2 MD Release/
+/MP x2 MT Release/
+/MP x4 Debug/
+/MP x4 MD Release/
+/MP x4 MT Release/
