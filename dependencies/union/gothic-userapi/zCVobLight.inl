@@ -3,3 +3,4 @@
 // User API for zCVobLight
 // Add your methods here
 
+void Hook_DoAnimation();

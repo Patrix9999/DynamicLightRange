@@ -3,3 +3,4 @@
 // User API for zCVobLightData
 // Add your methods here
 
+void Hook_Unarchive(zCArchiver&);
