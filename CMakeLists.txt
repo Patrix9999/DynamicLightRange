@@ -16,7 +16,6 @@ target_sources(${CMAKE_PROJECT_NAME} PRIVATE ${SRC})
 
 target_compile_definitions(${CMAKE_PROJECT_NAME}
     PRIVATE
-        _UNION_API_DLL
         __G1
         __G1A
         __G2
