@@ -4,7 +4,7 @@ file(GLOB_RECURSE SRC
 	"union-api/*.cpp"
 )
 
-add_library(union-api SHARED)
+add_library(union-api STATIC)
 target_sources(union-api PRIVATE ${SRC})
 
 set_target_properties(union-api PROPERTIES
@@ -13,7 +13,7 @@ set_target_properties(union-api PROPERTIES
 
 target_compile_definitions(union-api
 	PUBLIC
-		_UNION_API_DLL
+		_UNION_API_LIB
 	PRIVATE
 		_UNION_API_BUILD
 )
