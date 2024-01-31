@@ -24,7 +24,7 @@ namespace Gothic_II_Addon
         reg.eip = 0x0060A41E;
     }
 
-    auto Hook_zCVobLight_DoAnimation = Union::CreateHook((void*)0x006081C0, &zCVobLight::Hook_DoAnimation);
+    auto Hook_zCVobLight_DoAnimation = Union::CreateHook((void*)0x006081C0, &zCVobLight::Hook_DoAnimation, Union::HookType::Hook_Detours);
     void zCVobLight::Hook_DoAnimation()
     {
         if (lightData.rangeAniFPS > 0)
@@ -32,25 +32,27 @@ namespace Gothic_II_Addon
             int numFrames = lightData.rangeAniScaleList.GetNumInList();
             if (numFrames > 0)
             {
-                int actFrame = int(floor(lightData.rangeAniActFrame));
-                float scale = lightData.rangeAniScaleList[actFrame];
+                int activeFrame = int(lightData.rangeAniActFrame);
+                float scale = lightData.rangeAniScaleList[activeFrame];
 
                 if (lightData.rangeAniSmooth)
                 {
-                    float percentage = lightData.rangeAniActFrame - actFrame;
+                    float fraction = lightData.rangeAniActFrame - activeFrame;
 
-                    int nextFrame = actFrame + 1;
+                    int nextFrame = activeFrame + 1;
                     if (nextFrame >= numFrames)
                         nextFrame = 0;
 
-                    scale += percentage * (lightData.rangeAniScaleList[nextFrame] - scale);
+                    scale += fraction * (lightData.rangeAniScaleList[nextFrame] - scale);
                 }
 
                 SetRange(lightData.rangeBackup * scale, FALSE);
-                lightData.rangeAniActFrame += lightData.rangeAniFPS * ztimer->frameTimeFloat;
 
-                if (actFrame >= numFrames)
-                    lightData.rangeAniActFrame = 0;
+                lightData.rangeAniActFrame += lightData.rangeAniFPS * ztimer->frameTimeFloat;
+                activeFrame = int(lightData.rangeAniActFrame);
+
+                if (lightData.rangeAniActFrame >= numFrames)
+                    lightData.rangeAniActFrame -= numFrames * (activeFrame / numFrames);
             }
         }
 
