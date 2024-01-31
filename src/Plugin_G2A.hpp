@@ -2,27 +2,26 @@
 
 namespace Gothic_II_Addon
 {
-    auto Hook_zCVobLightData_Unarchive = Union::CreateHook((void*)0x00609FA0, &zCVobLightData::Hook_Unarchive);
-    void zCVobLightData::Hook_Unarchive(zCArchiver& arc)
+    void __fastcall zCVobLightData_Partial_Unarchive(Union::Registers& reg);
+    auto Hook_zCVobLightData_Unarchive = Union::CreatePartialHook((void*)0x0060A22B, &zCVobLightData_Partial_Unarchive);
+    void __fastcall zCVobLightData_Partial_Unarchive(Union::Registers& reg)
     {
-        (this->*Hook_zCVobLightData_Unarchive)(arc);
+        zCVobLightData* self = (zCVobLightData*)reg.edi;
+        zSTRING* arg = (zSTRING*)(reg.esp + 0x7c);
 
-        zSTRING arg = arc.ReadString("rangeAniScale");
+        self->rangeAniScaleList.EmptyList();
 
-        if (!arg.IsEmpty())
-        {
-            rangeAniScaleList.EmptyList();
+        zSTRING value;
+        int i = 1;
 
-            zSTRING value;
-            int i = 1;
+        do {
+            value = arg->PickWord(i, zSTRING(" "), zSTRING(" "));
+            self->rangeAniScaleList.Insert(value.ToFloat());
 
-            do {
-                value = arg.PickWord(i, zSTRING(" "), zSTRING(" "));
-                rangeAniScaleList.Insert(value.ToFloat());
+            ++i;
+        } while (!value.IsEmpty());
 
-                i++;
-            } while (!value.IsEmpty());
-        }
+        reg.eip = 0x0060A41E;
     }
 
     auto Hook_zCVobLight_DoAnimation = Union::CreateHook((void*)0x006081C0, &zCVobLight::Hook_DoAnimation);
