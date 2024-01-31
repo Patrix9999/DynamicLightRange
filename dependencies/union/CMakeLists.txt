@@ -8,7 +8,7 @@ add_library(union-api STATIC)
 target_sources(union-api PRIVATE ${SRC})
 
 set_target_properties(union-api PROPERTIES
-        OUTPUT_NAME "UnionApi"
+	OUTPUT_NAME "UnionApi"
 )
 
 target_compile_definitions(union-api
