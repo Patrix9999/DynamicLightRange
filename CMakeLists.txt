@@ -6,7 +6,7 @@ include(target_add_versioninfo)
 
 project(DynamicLightRange
 	DESCRIPTION "Union plugin for G2:NoTR"
-	VERSION 1.0.0.0
+	VERSION 1.1.1.0
 )
 
 set(CMAKE_CXX_STANDARD 17)
