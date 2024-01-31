@@ -23,30 +23,25 @@ target_link_directories(union-api PUBLIC "union-api/union-api")
 
 # gothic-api
 
-file(
-	COPY "gothic-api/"
-	DESTINATION "${CMAKE_CURRENT_BINARY_DIR}"
-	PATTERN "ZenGin/Gothic_UserAPI" EXCLUDE
+file(GLOB_RECURSE SRC 
+    "gothic-api/*.cpp"
 )
 
 add_library(gothic-api INTERFACE)
-target_sources(gothic-api
+target_sources(gothic-api INTERFACE ${SRC})
+
+target_include_directories(gothic-api 
 	INTERFACE
-		"${CMAKE_CURRENT_BINARY_DIR}/ZenGin/zGothicAPI.cpp"
+		"gothic-api/"
+		"gothic-userapi/"
 )
 
-target_include_directories(gothic-api INTERFACE "${CMAKE_CURRENT_BINARY_DIR}")
-target_link_directories(gothic-api INTERFACE "${CMAKE_CURRENT_BINARY_DIR}")
-
-# gothic-userapi
-
-add_custom_target(gothic-userapi
-	COMMAND ${CMAKE_COMMAND} -E copy_directory "${CMAKE_CURRENT_SOURCE_DIR}/gothic-userapi" "${CMAKE_CURRENT_BINARY_DIR}/ZenGin/Gothic_UserAPI"
+target_link_directories(gothic-api 
+	INTERFACE 
+		"gothic-api/"
 )
 
 # union
 
 add_library(union INTERFACE)
-
 target_link_libraries(union INTERFACE gothic-api union-api)
-add_dependencies(union gothic-userapi)
