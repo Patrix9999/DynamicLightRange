@@ -37,5 +37,3 @@ HOOKSPACE(Gothic_II_Addon, GetGameVersion() == ENGINE);
 #endif
 
 HOOKSPACE(Global, true);
-
-#include "Game.hpp"
