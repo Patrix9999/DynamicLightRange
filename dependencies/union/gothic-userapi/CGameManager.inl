@@ -3,4 +3,3 @@
 // User API for CGameManager
 // Add your methods here
 
-void Dupa() { printf("XD\n"); }
