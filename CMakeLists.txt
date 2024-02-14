@@ -35,7 +35,7 @@ target_include_directories(${CMAKE_PROJECT_NAME}
 target_add_versioninfo(${CMAKE_PROJECT_NAME}
 	VERSION "${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}.${PROJECT_VERSION_PATCH}.${PROJECT_VERSION_TWEAK}"
 	COMPANY_NAME "Gothic Community"
-	PRODUCT_NAME "DynamicLightRange"
+	PRODUCT_NAME "${CMAKE_PROJECT_NAME}"
 )
 
 add_subdirectory(dependencies)
