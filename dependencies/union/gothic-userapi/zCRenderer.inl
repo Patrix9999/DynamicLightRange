@@ -1,1 +1,0 @@
-int Vid_SetMode_Union( int newXDim, int newYDim, int newBpp, HWND* initContextHandle );
