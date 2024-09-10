@@ -3,7 +3,7 @@
 namespace Gothic_II_Addon
 {
     void __fastcall zCVobLightData_Partial_Unarchive(Union::Registers& reg);
-    auto Hook_zCVobLightData_Unarchive = Union::CreatePartialHook((void*)0x0060A22B, &zCVobLightData_Partial_Unarchive);
+    auto Hook_zCVobLightData_Unarchive = Union::CreatePartialHook(reinterpret_cast<void*>(0x0060A22B), &zCVobLightData_Partial_Unarchive);
     void __fastcall zCVobLightData_Partial_Unarchive(Union::Registers& reg)
     {
         zCVobLightData* self = (zCVobLightData*)reg.edi;
@@ -24,7 +24,7 @@ namespace Gothic_II_Addon
         reg.eip = 0x0060A41E;
     }
 
-    auto Hook_zCVobLight_DoAnimation = Union::CreateHook((void*)0x006081C0, &zCVobLight::Hook_DoAnimation, Union::HookType::Hook_Detours);
+    auto Hook_zCVobLight_DoAnimation = Union::CreateHook(reinterpret_cast<void*>(0x006081C0), &zCVobLight::Hook_DoAnimation, Union::HookType::Hook_Detours);
     void zCVobLight::Hook_DoAnimation()
     {
         if (lightData.rangeAniFPS > 0)
