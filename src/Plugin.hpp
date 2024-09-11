@@ -160,7 +160,6 @@ namespace GOTHIC_NAMESPACE
 	void __fastcall zCWorld_Render(Union::Registers& reg)
 	{
 		Game_Loop();
-		Partial_zCWorld_Render(reg);
 	}*/
 
 	/*void __fastcall zCMenu_Render(zCMenu* self, void* vtable);
