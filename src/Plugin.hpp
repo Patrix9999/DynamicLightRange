@@ -5,6 +5,11 @@ namespace GOTHIC_NAMESPACE
 	// NOTE! Callbacks won't be called by default, you need to uncomment
 	// hooks that will call specific callback
 
+	void Game_EntryPoint()
+	{
+
+	}
+
 	void Game_Init()
 	{
 
