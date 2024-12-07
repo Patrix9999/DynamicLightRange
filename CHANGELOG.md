@@ -1,0 +1,2 @@
+- Refactorized code base to support multiple gothic platforms
+- Added support for **gothic 2** platform
