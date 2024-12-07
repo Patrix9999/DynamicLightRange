@@ -1,9 +1,7 @@
-// Code for Gothic II Addon (NotR) engine (G2A)
-
-namespace Gothic_II_Addon
+namespace GOTHIC_NAMESPACE
 {
     void __fastcall zCVobLightData_Partial_Unarchive(Union::Registers& reg);
-    auto Hook_zCVobLightData_Unarchive = Union::CreatePartialHook(reinterpret_cast<void*>(0x0060A22B), &zCVobLightData_Partial_Unarchive);
+    auto Hook_zCVobLightData_Unarchive = Union::CreatePartialHook(reinterpret_cast<void*>(zSwitch(0, 0, 0x00602F6B, 0x0060A22B)), &zCVobLightData_Partial_Unarchive);
     void __fastcall zCVobLightData_Partial_Unarchive(Union::Registers& reg)
     {
         zCVobLightData* self = (zCVobLightData*)reg.edi;
@@ -21,10 +19,10 @@ namespace Gothic_II_Addon
             ++i;
         } while (!value.IsEmpty());
 
-        reg.eip = 0x0060A41E;
+        reg.eip = zSwitch(0, 0, 0x0060315E, 0x0060A41E);
     }
 
-    auto Hook_zCVobLight_DoAnimation = Union::CreateHook(reinterpret_cast<void*>(0x006081C0), &zCVobLight::Hook_DoAnimation, Union::HookType::Hook_Detours);
+    auto Hook_zCVobLight_DoAnimation = Union::CreateHook(reinterpret_cast<void*>(zSwitch(0, 0, 0x00601270, 0x006081C0)), &zCVobLight::Hook_DoAnimation, Union::HookType::Hook_Detours);
     void zCVobLight::Hook_DoAnimation()
     {
         if (lightData.rangeAniFPS > 0)
