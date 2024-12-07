@@ -31,7 +31,7 @@ jobs:
           $plugin_dll = $plugin_dll.Replace((Resolve-Path ".").Path + "\", "")
           $plugin_dll = $plugin_dll.Replace("\", "/")
           echo "plugin_dll=$plugin_dll" >> $env:GITHUB_ENV
-          echo "Found plugin path: $env:plugin_dll"
+          echo "Found plugin path: $plugin_dll"
 
       - name: Upload plugin
         uses: softprops/action-gh-release@v2
