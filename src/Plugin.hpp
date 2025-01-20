@@ -120,6 +120,14 @@ namespace GOTHIC_NAMESPACE
 
 	}
 
+	/*int __stdcall WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nShowCmd);
+	auto Hook_WinMain = Union::CreateHook(reinterpret_cast<void*>(zSwitch(0x004F3E10, 0x00506810, 0x005000F0, 0x00502D70)), &WinMain, Union::HookType::Hook_Detours);
+	int __stdcall WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nShowCmd)
+	{
+		Game_EntryPoint();
+		return Hook_WinMain(hInstance, hPrevInstance, lpCmdLine, nShowCmd);
+	}*/
+
 	/*void __fastcall oCGame_Init(oCGame* self, void* vtable);
 	auto Hook_oCGame_Init = Union::CreateHook(reinterpret_cast<void*>(zSwitch(0x00636F50, 0x0065D480, 0x006646D0, 0x006C1060)), &oCGame_Init, Union::HookType::Hook_Detours);
 	void __fastcall oCGame_Init(oCGame* self, void* vtable)
